@@ -7,7 +7,10 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 const font = {
     fontStyle: "italic",
-    fontSize: "smaller"
+    fontSize: "20px"
+}
+const social = {
+    color: "whitesmoke"
 }
 
 const Foot = () => {
@@ -24,7 +27,7 @@ const Foot = () => {
 
                     You can register for Free and search according to your specific criteria on age, height, community, profession, income, location and much more- on your computer, tablet or mobile. Regular custom mails and notifications make the process easier and take you closer to your shadimubarak!</p>
                 <hr class="my-4" />
-                <div class="lead" style={{color : "whitesmoke"}}>
+                <div class="lead" style={{social}}>
                    
                 <a href="https://www.facebook.com/"><FaFacebook size="30px"/></a>
                 <a href="https://www.google.com/gmail/"><FaEnvelope size="30px"/></a>
