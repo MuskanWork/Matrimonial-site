@@ -2,7 +2,7 @@ import { Navbar, NavDropdown, Nav, Button, Form, FormControl } from 'react-boots
 import logo1 from '/home/rails/Desktop/Project/shadimubarak/src/images/logo1.jpg';
 import '/home/rails/Desktop/Project/shadimubarak/src/component/navbar/navstyle.css';
 import Register from '/home/rails/Desktop/Project/shadimubarak/src/component/navbar/Register.js';
-const Nav1 = () => {
+const Nav1 = (props) => {
 
   return (
     <>
@@ -23,7 +23,8 @@ const Nav1 = () => {
           </Nav>
           <Form inline>
             <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button>
-            <button class="btn btn-primary my-2 my-sm-0" type="submit" onClick= {<Register/>}>Register</button>
+            <Register onClick={props.handleClose} type="button" class="btn btn-primary my-2 my-sm-0"></Register>
+            
 
           </Form>
         </Navbar.Collapse>
