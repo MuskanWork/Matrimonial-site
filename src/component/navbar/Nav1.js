@@ -1,4 +1,4 @@
-import { Navbar, NavDropdown, Nav, Button, Form, FormControl } from 'react-bootstrap';
+import { Navbar, NavDropdown, Nav, Form } from 'react-bootstrap';
 import logo1 from '/home/rails/Desktop/Project/shadimubarak/src/images/logo1.jpg';
 import '/home/rails/Desktop/Project/shadimubarak/src/component/navbar/navstyle.css';
 import Register from '/home/rails/Desktop/Project/shadimubarak/src/component/navbar/Register.js';

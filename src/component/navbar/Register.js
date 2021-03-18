@@ -1,4 +1,4 @@
-import { Modal, Button, Form, Col, Row, FormControl, FormGroup } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row, FormGroup } from 'react-bootstrap';
 import React, { useState } from 'react';
 
 const title = {
