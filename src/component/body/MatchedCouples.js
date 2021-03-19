@@ -5,7 +5,7 @@ import singh from "/home/rails/Desktop/Project/shadimubarak/src/images/singh.jpg
 import kakkar from '/home/rails/Desktop/Project/shadimubarak/src/images/kakkar.jpeg';
 
 const imgSize = {
-    width: "300px",
+    width: "340px",
     height: "300px"
 }
 const text = {
