@@ -1,5 +1,5 @@
 import { FaFacebook, FaEnvelope, FaGoogle , FaInstagram } from 'react-icons/fa'
-import '/home/rails/Desktop/Project/shadimubarak/src/component/footer/footer.css'
+// import '/home/rails/Desktop/Project/shadimubarak/src/component/footer/footer.css'
 // import {SocialMediaIconsReact} from 'social-media-icons-react';
 // import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 // import { faYoutube , FaFacbooke , }

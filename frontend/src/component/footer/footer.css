@@ -1,6 +1,6 @@
 footer {
     bottom: 0px;
-    background-color:rgb(115, 115, 219);
+    background-color:blue;
     margin-bottom: 0px;
 }
 .lead-a{
@@ -10,8 +10,4 @@ footer {
     
     font-family:cursive;
     font-size: small;
-
-    font-weight:bold ;
-    
-   
 }

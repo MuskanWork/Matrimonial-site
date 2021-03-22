@@ -1,8 +1,8 @@
 import { Card, CardDeck } from 'react-bootstrap';
-import Kohli from "/home/rails/Desktop/Project/shadimubarak/src/images/kohli.jpg";
-import chopra from "/home/rails/Desktop/Project/shadimubarak/src/images/chopra.png";
-import singh from "/home/rails/Desktop/Project/shadimubarak/src/images/singh.jpg";
-import kakkar from '/home/rails/Desktop/Project/shadimubarak/src/images/kakkar.jpeg';
+import Kohli from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/kohli.jpg";
+import chopra from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/chopra.png";
+import singh from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/singh.jpg";
+import kakkar from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/kakkar.jpeg';
 
 const imgSize = {
     width: "340px",
