@@ -18,7 +18,7 @@ const Foot = () => {
         <footer>
 
             <Jumbotron style = {{backgroundColor : "rgb(99, 120, 146)", color : "whitesmoke"}}  >
-                <center> <h4 class="display-4">About shadimubarak.com</h4></center>
+                <center> <h4 class="display-4" id="About">About shadimubarak.com</h4></center>
                 <br />
                 <p class="lead" style = {font}>
                     shadimubarak.com is one of India’s leading matrimonial websites that has helped lakhs of members find their perfect life partner.
