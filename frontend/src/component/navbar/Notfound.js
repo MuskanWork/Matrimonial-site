@@ -1,9 +1,17 @@
+import Notfound from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/Notfound.jpg';
 
-const Notfound = () =>{
+const imsize={
+    width: "1500px",
+    height: "700px"
+}
+
+
+
+const Error = () =>{
     return(
         <>
-        <h1>not found</h1>
+       <img src={Notfound} style={imsize}/>
         </>
     )
 }
-export default Notfound;
+export default Error;

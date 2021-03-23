@@ -11,11 +11,11 @@ const Nav1 = (props) => {
   return (
     <>
       <Navbar className="bg" expand="lg">
-        <Navbar.Brand href="./Nav1"><img src={logo1} width="120" height="80" alt="" /></Navbar.Brand>
+        <Navbar.Brand href="./Home"><img src={logo1} width="120" height="80" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="./Nav1">Home</Nav.Link>
+            <Nav.Link href="./Home">Home</Nav.Link>
             <Nav.Link href="#About">About</Nav.Link>
             
             <Nav.Link href="/Profile">Profile</Nav.Link>
