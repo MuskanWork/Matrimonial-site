@@ -16,6 +16,22 @@ function Register(props) {
   });
   const [show, setShow] = useState(false);
 
+  const [userRegistration, setuserRegistration] = useState({
+    username : "",
+    email: "",
+    password: "",
+    dob : "",
+    height: "",
+    weight: "",
+    status : "",
+    toungue : "",
+    religion : "",
+    gender : "" , 
+    city : "",
+    pincode : "", 
+    mobile: "",
+    tc : ""
+  });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -254,8 +270,7 @@ function Register(props) {
                 {errors.tc && (<div className="invalid-feedback">{errors.tc.message}</div>)}
               </Col>
             </Form.Group>
-          </Form>
-        </Modal.Body>
+          
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -264,6 +279,8 @@ function Register(props) {
             Register
             </Button>
         </Modal.Footer>
+        </Form>
+        </Modal.Body>
       </Modal>
     </>
   );

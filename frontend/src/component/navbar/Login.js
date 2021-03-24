@@ -2,6 +2,7 @@ import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 import React, { useState } from 'react';
 import {useForm} from 'react-hook-form';
 import {className} from "classname";
+import axios from 'axios';
 const title = {
     // textAlign: "center",
     backgroundColor: "rgb(115, 115, 219)",
@@ -15,10 +16,28 @@ function Login(props) {
     });
     const [show, setShow] = useState(false);
 
+    // const [userLogin, setuserLogin] = useState({
+    //     email: "",
+    //     password: ""
+    // })
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const onsubmit = (data) =>{console.log(data)}
+    const onsubmit = (data) =>{
+    
+        // console.log(data.email);
+        // console.log(data.password);
+        const LoginData = {
+            email : data.email,
+            password : data.password
+        }
+        console.log(LoginData);
+        axios.post('http://localhost:8003/login', LoginData)
+        .then(res => console.log(res.data))
+        }
+
+        
 
     return (
         <>
@@ -60,8 +79,8 @@ function Login(props) {
                                 {errors.password && (<div className= "invalid-feedback">{errors.password.message}</div>)}
                             </Col>
                         </Form.Group>
-                    </Form>
-                </Modal.Body>
+                    
+                
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose} >
                         Close
@@ -70,6 +89,8 @@ function Login(props) {
                         Sign in
             </Button>
                 </Modal.Footer>
+                </Form>
+                </Modal.Body>
             </Modal>
         </>
     );
