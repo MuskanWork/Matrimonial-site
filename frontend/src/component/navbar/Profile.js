@@ -2,7 +2,7 @@ import { CardDeck, Card, Breadcrumb, Button, Form, Row, Col } from 'react-bootst
 import axios from 'axios';
 import React, { useState , useEffect} from 'react';
 import { useForm } from 'react-hook-form';
-import Kohli from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/kohli.jpg";
+
 
 const profile = {
     width: "465px",
@@ -18,11 +18,12 @@ const bgtexture = {
     const [profiles, setProfiles] = useState([]);
     const [visible , setVisible] = useState(1);
     const { register, handleSubmit } = useForm();
+    const [displayimg , setDisplayimg] = useState([]);
     const [file , setFile] = useState();
 
     const handleProfile= async()=>{
 try {
-    const res = await axios.get('http://localhost:8002/register')
+    const res = await axios.get('http://localhost:8003/register')
     setProfiles(await res.data);
 
 }catch(err){
@@ -32,13 +33,9 @@ try {
 
  const handleImage= async()=>{
     try {
-        const res = await axios.get('http://localhost:8002/upload')
-        const img = await res.data;
-        console.log(img);
-       const dp=(img)=>{
-        return img;
-        }
-    
+        const res = await axios.get('http://localhost:8003/upload')
+        setDisplayimg(await res.data);
+        console.log(res.data);
     }catch(err){
         alert(err);
         }
@@ -50,8 +47,8 @@ try {
  }
 
     useEffect(() => {
-       handleProfile(),
-       handleImage()
+       handleProfile();
+       handleImage();
     },[])
 
     const upload= async(data)=>{
@@ -64,8 +61,8 @@ try {
             //     file : data.file    
             // }
            
-        const response = await axios.post('http://localhost:8002/upload', filedata)
-        console.log(response.data)
+        const response = await axios.post('http://localhost:8003/upload', filedata)
+            console.log("image send");
         }catch(err){
             alert(err);
         }
@@ -91,7 +88,17 @@ try {
                         </Breadcrumb.Item>
                     </Breadcrumb>
                     <Card.Body>
-                    
+                    {
+                        displayimg.slice(0,visible).map((curImg) => {
+                            return(
+                                <div key={curImg.id}>
+                                {console.log(curImg.image)}
+                                <img src={`./uploads/${curImg.image}`} />
+                                <img src="./uploads/${curImg.image}" />
+                                </div>
+                            )
+                        })
+                    }
                     </Card.Body>
                     <Card.Footer>
                     
@@ -100,7 +107,7 @@ try {
                 </Card>
 
                 <Card>
-                    <Card.Img variant="top" src={dp} style={profile} />
+                    <Card.Img variant="top" src="" style={profile} />
                     <Card.Body>
                         <Card.Title>
                             <Button variant="danger" as="input" type="button" value="Dislike" />

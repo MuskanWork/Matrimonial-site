@@ -4,7 +4,7 @@ require('./database/conn');
 const RegUser = require("./modals/register");
 const LogUser = require("./modals/loginSchema");
 const path = require('path');
-const port = process.env.PORT || 8002;
+const port = process.env.PORT || 8003;
 const regRouter = require('./router/regRoute');
 const logRouter = require('./router/logRoute');
 const cors = require('cors');

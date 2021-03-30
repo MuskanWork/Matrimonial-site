@@ -5,6 +5,7 @@ const uploadImg = require("../modals/uploadData")
 const bcrypt = require('bcrypt');
 const emailMsg = require('./mail');
 const multer = require('multer');
+// router.use(express.static(__dirname+"./uploads"))
 
 const storage = multer.diskStorage({
     destination : function(req, file , cb){
@@ -49,8 +50,6 @@ router.post("/register", async (req, res) => {
   
 })
 
-
-
 router.get("/register", async (req, res) => {
     try {
 
@@ -66,10 +65,16 @@ router.post("/upload", upload.single("file"), async (req, res)=>{
     try{
         console.log(req.file);
         const picture = new uploadImg({
-            image : req.file.image
+            image : req.file.filename
         })
          const pic= await picture.save();
         res.status(200).send(pic);
+        const recentPic = await uploadImg.find();
+        recentPic.exec(function(err,data){
+            if(err) throw err;
+
+            res.render({records : data});
+        })
         console.log("succesfull upload")
     }catch(e){
         res.status(400).send(e);
@@ -81,6 +86,12 @@ router.get("/upload", async (req, res) => {
 
         const picData = await uploadImg.find();
         res.status(200).send(picData);
+        picData.exec(function(err,data){
+            if(err) throw err;
+
+            res.render({records : data})
+        })
+        
     } catch (e) {
         res.status(400).send(e);
     }
