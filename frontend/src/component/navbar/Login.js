@@ -1,7 +1,8 @@
-import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row, NavLink } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import React, { useState } from 'react';
 import {useForm} from 'react-hook-form';
-import {className} from "classname";
+// import {className} from "classname";
 import axios from 'axios';
 const title = {
     // textAlign: "center",
@@ -16,13 +17,13 @@ function Login(props) {
     });
     const [show, setShow] = useState(false);
 
-    // const [userLogin, setuserLogin] = useState({
-    //     email: "",
-    //     password: ""
-    // })
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+       const RedirectProfile = (pass) =>{
+           return <Redirect to="/Profile" />
+       }
+
 
     const onsubmit = (data) =>{
     
@@ -32,12 +33,11 @@ function Login(props) {
             email : data.email,
             password : data.password
         }
-        console.log(LoginData);
-        axios.post('http://localhost:8003/login', LoginData)
-        .then(res => console.log(res.data))
-        }
-
-        
+        // console.log(LoginData);
+        axios.post('http://localhost:8002/login', LoginData)
+        .then(res => alert("login succesfull"), window.location = "/Profile")
+        .catch(err => alert("invalid id password"));
+    }  
 
     return (
         <>
@@ -58,7 +58,7 @@ function Login(props) {
                             <Col sm={9}>
                                 <Form.Control ref={register({required : "this field is required",
                                 pattern : {
-                                    value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                                    // value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                                     message : "please enter a valid email"}
                                 })} name="email" type="email" placeholder="Email" isInvalid={errors.email} />
                                
@@ -73,7 +73,7 @@ function Login(props) {
                             <Col sm={9}>
                                 <Form.Control ref={register({required : "this field is required",
                                 pattern : {
-                                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                    // value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                                     message : "please enter a valid password"}
                                 })} name="password" type="password" placeholder="Password" isInvalid={errors.password} />
                                 {errors.password && (<div className= "invalid-feedback">{errors.password.message}</div>)}
@@ -85,7 +85,7 @@ function Login(props) {
                     <Button variant="secondary" onClick={handleClose} >
                         Close
             </Button>
-                    <Button variant="primary" type="submit" onClick={handleClose}>
+                    <Button variant="primary" type="submit" onClick={handleClose} >
                         Sign in
             </Button>
                 </Modal.Footer>

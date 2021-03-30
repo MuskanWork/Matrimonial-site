@@ -17,7 +17,7 @@ function App() {
       <Route exact path="#About" component={Foot}/>
       <Route exact path="/Profile" component={Profile}/>
       <Route exact path="/" component={Home}/>
-      <Route exact path="/Home" component={Home}/>
+      <Route exact path="" component={Home}/>
       <Route exact path="/Notfound" component={Error}/>
       <Redirect to="/NotFound" />
       

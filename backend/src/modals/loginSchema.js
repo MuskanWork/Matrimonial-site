@@ -6,12 +6,7 @@ const UserLoginSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: [true, "Email is already present"],
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error("Invalid Email");
-            }
-        }
+        
     },
     password: {
         type: String,

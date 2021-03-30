@@ -1,7 +1,7 @@
 import { Modal, Button, Form, Col, Row, FormGroup, FormControl } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
+import axios from 'axios';
 
 const title = {
   textAlign: "center",
@@ -16,27 +16,31 @@ function Register(props) {
   });
   const [show, setShow] = useState(false);
 
-  const [userRegistration, setuserRegistration] = useState({
-    username : "",
-    email: "",
-    password: "",
-    dob : "",
-    height: "",
-    weight: "",
-    status : "",
-    toungue : "",
-    religion : "",
-    gender : "" , 
-    city : "",
-    pincode : "", 
-    mobile: "",
-    tc : ""
-  });
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const onsubmit = (data) => { console.log(data) }
+  const onsubmit = (data) => { 
+    // data.preventDefault();
+    const RegisterData = {
+            username : data.username,
+            email : data.email,
+            password : data.password,
+            dob : data.dob,
+            height : data.height,
+            weight : data.weight,
+            matrialStatus : data.status,
+            motherToungue : data.toungue,
+            religion : data.religion,
+            gender : data.gender,
+            city : data.city,
+            pincode : data.pincode,
+            mobile : data.mobile
+  }
+    console.log(RegisterData) 
+  
+    axios.post('http://localhost:8002/register', RegisterData)
+    .then(res => console.log(res.data))
+  }
 
   return (
     <>

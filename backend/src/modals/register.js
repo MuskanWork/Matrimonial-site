@@ -27,6 +27,38 @@ const UserRegisterSchema = new mongoose.Schema({
             required : true,
 
         },
+        height : {
+            type : Number,
+            required : true,
+        },
+        weight : {
+            type : Number,
+            required : true,
+        },
+        matrialStatus : {
+            type: String,
+            required : true,
+        },
+        motherToungue : {
+            type : String,
+            required : true,
+        },
+        religion : {
+            type : String,
+            required : true,
+        },
+        gender : {
+            type : String,
+            required : true,
+        },
+        city : {
+            type : String,
+            required : true,
+        },
+        pincode : {
+            type : String,
+            required : true,
+        },
         mobile : {
 
             type : Number,
@@ -37,6 +69,8 @@ const UserRegisterSchema = new mongoose.Schema({
         }
 
 })
+
+
 
 const RegUser = new mongoose.model('RegUser' ,UserRegisterSchema );
 
