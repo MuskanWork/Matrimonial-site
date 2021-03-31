@@ -34,7 +34,7 @@ function Login(props) {
             password : data.password
         }
         // console.log(LoginData);
-        axios.post('http://localhost:8003/login', LoginData)
+        axios.post('http://localhost:8000/login', LoginData)
         .then(res => alert("login succesfull"), window.location = "/Profile")
         .catch(err => alert("invalid id password"));
     }  

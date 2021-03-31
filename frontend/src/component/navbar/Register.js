@@ -38,7 +38,7 @@ function Register(props) {
   }
     console.log(RegisterData) 
   
-    axios.post('http://localhost:8003/register', RegisterData)
+    axios.post('http://localhost:8000/register', RegisterData)
     .then(res => console.log(res.data))
   }
 
