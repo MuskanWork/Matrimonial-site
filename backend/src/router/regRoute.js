@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const emailMsg = require('./mail');
 const multer = require('multer');
 
-router.use('/public', express.static(__dirname+'/public'));
+router.use('/public', express.static('public'));
 
 const storage = multer.diskStorage({
     destination : function(req, file , cb){
@@ -67,7 +67,7 @@ router.post("/upload", upload.single("file"), async (req, res)=>{
         const url = req.protocol + '://' + req.get('host')
         console.log(req.file);
         const picture = new uploadImg({
-            image : '/public/' +req.file.filename
+            image :url+"/public/" + req.file.filename
         })
          const pic= await picture.save();
         res.status(200).send(pic);
