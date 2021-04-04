@@ -19,6 +19,8 @@ const Profile = () => {
     const { register, handleSubmit } = useForm();
     const [displayimg, setDisplayimg] = useState([]);
     const [file, setFile] = useState();
+     const [remove , setRemove] = useState(profiles.slice(0,visible));
+     console.log(profiles.slice(0,visible));
 
     const handleProfile = async () => {
         try {
@@ -45,9 +47,12 @@ const Profile = () => {
             )
         }     
 
+        const loadLess = () =>{
+            setRemove([])
+        }
 
     const loadMore = () => {
-        setVisible(visible + 1)
+        setVisible( visible +1)
     }
 
     useEffect(() => {
@@ -102,6 +107,7 @@ const Profile = () => {
                                     )
                                     })
                     }
+                    
                     </Card.Body>
                     <Card.Footer>
 
@@ -123,15 +129,16 @@ const Profile = () => {
 
                     <Card.Body>
                         <Card.Title>
-                            <Button variant="danger" as="input" type="button" value="Dislike" />
-                            <Button variant="success" as="input" type="button" value="Like" id="hide" onClick={loadMore} />
+                            <Button variant="danger" as="input" type="button" value="Dislike" onClick={loadLess}  />
+                            <Button variant="success" as="input" type="button" value="Like" onClick={loadMore} />
                         </Card.Title>
                         <Card.Text>
+                       
                             {
                                 profiles.slice(0, visible).map((curElem) => {
                                     return (
                                         <div key={curElem.id}>
-                                            <h3 className="hideData">{curElem.username}</h3>
+                                            <h3 >{curElem.username}</h3>
                                             <h6><b>Date of Birth :</b> {curElem.dob} <br /><b>Contact:</b> {curElem.mobile}
                                                 <br />
                                                 <b>Height:</b> {curElem.height}<br /> <b>Weight:</b> {curElem.weight}
@@ -146,6 +153,7 @@ const Profile = () => {
                                     )
                                 })
                             }
+                            
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
@@ -207,6 +215,10 @@ const Profile = () => {
                                 </Col>
                             </Form.Group>
                         </Card.Text>
+                        <br/>
+                        <Button variant="danger" size="lg" block href="./home">
+                            Logout
+                            </Button>
                     </Card.Body>
                     <Card.Footer>
                         <small className="text-muted">Filter it out your choice</small>

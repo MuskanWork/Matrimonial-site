@@ -1,8 +1,9 @@
-import { Modal, Button, Form, Col, Row, FormGroup, FormControl } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row, FormGroup } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
-
+// import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+ import {userRegisterAction} from '../../redux/actions/userRegisterAction'
 const title = {
   textAlign: "center",
   backgroundColor: "rgb(115, 115, 219)",
@@ -18,6 +19,12 @@ function Register(props) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const dispatch = useDispatch();
+
+  //getting user register from store
+  const userRegister = useSelector(state => state.userRegister);
+  const { userInfo } = userRegister;
 
   const onsubmit = (data) => { 
     // data.preventDefault();
@@ -36,10 +43,12 @@ function Register(props) {
             pincode : data.pincode,
             mobile : data.mobile
   }
-    console.log(RegisterData) 
+  //dispatching action
+    dispatch(userRegisterAction(RegisterData));
+console.log(RegisterData);
   
-    axios.post('http://localhost:8000/register', RegisterData)
-    .then(res => console.log(res.data))
+    // axios.post('http://localhost:8000/register', RegisterData)
+    // .then(res => console.log(res.data))
   }
 
   return (

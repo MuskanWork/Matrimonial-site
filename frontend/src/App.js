@@ -1,6 +1,5 @@
 
 import './App.css';
-import MatchedCouples from './component/body/MatchedCouples';
 import Foot from './component/footer/footer';
 import Nav1 from './component/navbar/Nav1';
 import {Route, Switch, Redirect} from 'react-router-dom';
