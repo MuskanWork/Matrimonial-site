@@ -1,17 +1,15 @@
 import { Navbar, Nav, Form } from 'react-bootstrap';
-import logo1 from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/logo1.jpg';
-import '/home/rails/Desktop/Project/shadimubarak/frontend/src/component/navbar/navstyle.css';
-import Register from '/home/rails/Desktop/Project/shadimubarak/frontend/src/component/navbar/Register.js';
-import Login from '/home/rails/Desktop/Project/shadimubarak/frontend/src/component/navbar/Login.js';
-// import Foot from '../footer/footer';
-// import Profile from './Profile';
-import '/home/rails/Desktop/Project/shadimubarak/frontend/src/component/navbar/Profile.js';
+// import logo1 from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/logo1.jpg';
+import './navstyle.css';
+import Register from './Register';
+import Login from './Login';
+// import '/home/rails/Desktop/Project/shadimubarak/frontend/src/component/navbar/Profile.js';
 const Nav1 = (props) => {
 
   return (
     <>
       <Navbar className="bg" expand="lg">
-        <Navbar.Brand href="./Home"><img src={logo1} width="120" height="80" alt="" /></Navbar.Brand>
+        <Navbar.Brand href="./Home"><img src="./images/logo1.jpg" width="120" height="80" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

@@ -1,4 +1,4 @@
-import Notfound from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/Notfound.jpg';
+// import Notfound from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/Notfound.jpg';
 
 const imsize={
     width: "1500px",
@@ -10,7 +10,7 @@ const imsize={
 const Error = () =>{
     return(
         <>
-       <img src={Notfound} style={imsize}/>
+       <img src="./images/Notfound.jpg" style={imsize}/>
         </>
     )
 }

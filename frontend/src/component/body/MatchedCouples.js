@@ -1,8 +1,8 @@
 import { Card, CardDeck } from 'react-bootstrap';
-import Kohli from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/kohli.jpg";
-import chopra from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/chopra.png";
-import singh from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/singh.jpg";
-import kakkar from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/kakkar.jpeg';
+// import kohli from './images/kohli.jpeg'
+// import chopra from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/chopra.png";
+// import singh from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/singh.jpg";
+// import kakkar from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/kakkar.jpeg';
 
 const imgSize = {
     width: "340px",
@@ -25,25 +25,25 @@ const MatchedCouples = () => {
             <center><h2 style={TitleText}> Matched by ShadiMubarak </h2></center>
             <CardDeck>
                 <Card>
-                    <Card.Img variant="top" src={Kohli} style={imgSize} />
+                    <Card.Img variant="top" src="./images/kohli.jpg" style={imgSize} />
+                    <Card.Body>
+                        <Card.Title style={text}><center>Virat Anushka</center></Card.Title>
+                    </Card.Body>
+                </Card>
+                <Card>
+                    <Card.Img variant="top" src="./images/singh.jpg" style={imgSize} />
                     <Card.Body>
                         <Card.Title style={text}><center>Ranveer Deepika</center></Card.Title>
                     </Card.Body>
                 </Card>
                 <Card>
-                    <Card.Img variant="top" src={singh} style={imgSize} />
-                    <Card.Body>
-                        <Card.Title style={text}><center>Ranveer Deepika</center></Card.Title>
-                    </Card.Body>
-                </Card>
-                <Card>
-                    <Card.Img variant="top" src={chopra} style={imgSize} />
+                    <Card.Img variant="top" src="./images/chopra.png" style={imgSize} />
                     <Card.Body>
                         <Card.Title style={text}><center>Nick Priyanka</center></Card.Title>
                     </Card.Body>
                 </Card>
                 <Card>
-                    <Card.Img variant="top" src={kakkar} style={imgSize} />
+                    <Card.Img variant="top" src="./images/kakkar.jpeg" style={imgSize} />
                     <Card.Body>
                         <Card.Title style={text}><center>Roshanpreet Neha</center></Card.Title>
                     </Card.Body>

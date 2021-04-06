@@ -14,7 +14,7 @@ const reducer = combineReducers({
      userLogin : userLogReducer ,// for Login
      userProfilePic : userProfilePicReducer, //upload profile pic
      getProfileData : userProfileDataReducer, //get profile data
-     getProfileImg : userProfileImgReducer
+     getProfileImg : userProfileImgReducer //get profile img
 });
 
 //getting user from localStorage and save it into our store
