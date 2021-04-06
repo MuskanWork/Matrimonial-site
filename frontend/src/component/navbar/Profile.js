@@ -1,7 +1,11 @@
 import { CardDeck, Card, Breadcrumb, Button, Form, Row, Col } from 'react-bootstrap';
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import {userProfilePicAction} from '../../redux/actions/userProfilePicAction';
+import {userProfileDataAction} from '../../redux/actions/userProfileDataAction';
+import {userProfileImgAction} from '../../redux/actions/userProfileImgAction';
 
 const profile = {
     width: "465px",
@@ -15,66 +19,86 @@ const bgtexture = {
 const Profile = () => {
 
     const [profiles, setProfiles] = useState([]);
-    const [visible, setVisible] = useState(1);
+    const [visible, setVisible] = useState(0);
     const { register, handleSubmit } = useForm();
     const [displayimg, setDisplayimg] = useState([]);
     const [file, setFile] = useState();
-     const [remove , setRemove] = useState(profiles.slice(0,visible));
-     console.log(profiles.slice(0,visible));
+    const [liked , setLiked] = useState(0);
+    
+    const dispatch = useDispatch();
+
+    const getProfileData = useSelector(state => state.getProfileData);
+    // const { userInfo } = getProfileData;
+    
+    const getProfileInfo = getProfileData.userInfo
+    console.log(getProfileInfo);
 
     const handleProfile = async () => {
-        try {
-            const res = await axios.get('http://localhost:8000/register')
-            setProfiles(await res.data);
+       
+        dispatch(userProfileDataAction());
+         setProfiles(getProfileInfo)
 
-        } catch (err) {
-            alert(err);
-        }
+        // try {
+        //     const res = await axios.get('http://localhost:8000/register')
+        //     setProfiles(await res.data);
+        //     console.log(res.data)
+
+        // } catch (err) {
+        //     alert(err);
+        // }
     }
+    const getProfileImg = useSelector(state => state.getProfileImg);
+    const getProfilePic = getProfileImg.userInfo
+    console.log(getProfilePic);
 
     const handleImage = async () => {
-        try {
-            const res = await axios.get('http://localhost:8000/upload')
-            setDisplayimg(await res.data);
-            console.log(res.data);
-        } catch (err) {
-            alert(err);
-        }
-    }
-    const matches=(val)=>{
-            return(
-                <h3>you liked {val}'s profile</h3>
-            )
-        }     
+        dispatch(userProfileImgAction());
+        setDisplayimg(getProfilePic);
+        // try {
+        //     const res = await axios.get('http://localhost:8000/upload')
+        //     setDisplayimg(await res.data);
+        //     // console.log(res.data);
+        // } catch (err) {
+        //     alert(err);
+        // }
+    }   
 
         const loadLess = () =>{
-            setRemove([])
+            setVisible(visible +1)
         }
 
     const loadMore = () => {
-        setVisible( visible +1)
+         setVisible( visible +1)     
+         setLiked(liked +1) 
+       
     }
-
+console.log(visible);
     useEffect(() => {
         handleProfile();
         handleImage();
-    }, [])
+
+    },[]);
+
+    const userProfilePic = useSelector(state => state.userProfilePic);
+    // const { userInfo } = userProfilePic;
 
     const upload = async (data) => {
         console.log(data.file);
         const filedata = new FormData();
         filedata.append("file", file);
         console.log(filedata);
-        try {
-            // const uploadImg = {
-            //     file : data.file    
-            // }
 
-            const response = await axios.post('http://localhost:8000/upload', filedata)
-            console.log("image send");
-        } catch (err) {
-            alert(err);
-        }
+        dispatch(userProfilePicAction(filedata));
+        // try {
+        //     // const uploadImg = {
+        //     //     file : data.file    
+        //     // }
+
+        //     const response = await axios.post('http://localhost:8000/upload', filedata)
+        //     console.log("image send");
+        // } catch (err) {
+        //     alert(err);
+        // }
     }
     
    
@@ -93,20 +117,18 @@ const Profile = () => {
                     </Card.Header>
                     <Breadcrumb>
                         <Breadcrumb.Item href="#">Matches</Breadcrumb.Item>
-                        <Breadcrumb.Item href="#">
-                            Messages
-                        </Breadcrumb.Item>
                     </Breadcrumb>
                     <Card.Body>
-                    {
-                        profiles.slice(0, visible).map((curElem) => {
-                                    return (
-                                        <div key={curElem.id}>
-                                            {matches(curElem.username)}
-                                            </div>
-                                    )
-                                    })
-                    }
+                      {
+                    profiles && profiles.slice(0,liked).map((curElem) => {
+                        return (
+                            <div key={curElem.id}>
+                              <h3>you liked {curElem.username}'s profile</h3> 
+                                 {console.log(curElem.username)}  
+                                </div>
+                        )
+                        })
+                    }    
                     
                     </Card.Body>
                     <Card.Footer>
@@ -117,11 +139,10 @@ const Profile = () => {
 
                 <Card>
                     {
-                        displayimg.slice(0, visible).map((curImg) => {
+                        displayimg && displayimg.slice(0,1).map((curImg) => {
                             return (
-                                <div key={curImg.id}>
-                                    {console.log(curImg.image)}
-                                    <Card.Img variant="top" src={curImg.image} style={profile} />
+                                <div>
+                                    <Card.Img variant="top" src={displayimg[visible].image} style={profile} />
                                 </div>
                             )
                         })
@@ -130,29 +151,30 @@ const Profile = () => {
                     <Card.Body>
                         <Card.Title>
                             <Button variant="danger" as="input" type="button" value="Dislike" onClick={loadLess}  />
-                            <Button variant="success" as="input" type="button" value="Like" onClick={loadMore} />
+                            <Button variant="success" as="input" type="button" value="Like" onClick={loadMore}/>
                         </Card.Title>
                         <Card.Text>
-                       
-                            {
-                                profiles.slice(0, visible).map((curElem) => {
+                        {/* {profiles && profiles[visible].dob} */}
+             
+                           {
+                               profiles && profiles.slice(0,1).map((curElem) => {
                                     return (
-                                        <div key={curElem.id}>
-                                            <h3 >{curElem.username}</h3>
-                                            <h6><b>Date of Birth :</b> {curElem.dob} <br /><b>Contact:</b> {curElem.mobile}
+                                        <div>
+                                        <h3>{profiles[visible].username}</h3>
+                                            <h6><b>Date of Birth :</b> {profiles[visible].dob} <br /><b>Contact:</b> {profiles[visible].mobile}
                                                 <br />
-                                                <b>Height:</b> {curElem.height}<br /> <b>Weight:</b> {curElem.weight}
+                                                <b>Height:</b> {profiles[visible].height}<br /> <b>Weight:</b> {profiles[visible].weight}
                                                 <br />
-                                                <b>Matrial Status:</b>  {curElem.matrialStatus}
+                                                <b>Matrial Status:</b>  {profiles[visible].matrialStatus}
                                                 <br />
-                                                <b>Mother Toungue:</b> {curElem.motherToungue}<br />
-                                                <b>Religion:</b>  {curElem.religion} <br /><b>city:</b>{curElem.city}
+                                                <b>Mother Toungue:</b> {profiles[visible].motherToungue}<br />
+                                                <b>Religion:</b>  {profiles[visible].religion} <br /><b>city:</b>{profiles[visible].city}
                                             </h6>
                                         </div>
 
                                     )
                                 })
-                            }
+                            }  
                             
                         </Card.Text>
                     </Card.Body>
@@ -178,7 +200,7 @@ const Profile = () => {
                                         <option>Both</option>
 
                                     </Form.Control>
-
+                            <Button type="submit" >Change</Button>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row}>

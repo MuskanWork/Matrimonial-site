@@ -12,9 +12,14 @@ const userLoginAction = (LoginData) => {
             'Content-Type': 'application/json',
           },
         };
-        const { data } = axios.post('http://localhost:8000/login', LoginData)
-         .then(res => alert("login succesfull"), window.location = "/Profile")
-         .catch(err => alert("invalid id password"));
+        const data  = await axios.post('http://localhost:8000/login', LoginData)
+        try{
+          alert("login succesfull")
+           window.location = "/Profile"
+        }catch(e){
+          alert(e);
+        }
+        console.log(data);
         dispatch({
           type: USER_LOGIN_SUCCESS,
           payload: data
@@ -24,7 +29,7 @@ const userLoginAction = (LoginData) => {
       } catch (error) {
         dispatch({
           type: USER_LOGIN_FAIL,
-          payload: error.response && error.response.data.message,
+          payload: alert('invalid id password'),
         });
       }
     };

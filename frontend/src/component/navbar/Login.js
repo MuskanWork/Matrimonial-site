@@ -1,12 +1,11 @@
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 // import { Redirect } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useForm} from 'react-hook-form';
-import axios from 'axios';
+// import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
   import {userLoginAction} from '../../redux/actions/userLoginAction';
 const title = {
-    // textAlign: "center",
     backgroundColor: "rgb(115, 115, 219)",
     color: "whitesmoke"
 
@@ -25,6 +24,7 @@ function Login(props) {
 
     const userLogin = useSelector(state => state.userLogin);
   const { userInfo } = userLogin;
+  console.log(userLogin);
     // const state = useSelector(state=>{
     //     return state.userLogin;
     //   });
@@ -32,19 +32,17 @@ function Login(props) {
     //   console.log(state)
      
 
-    const onsubmit = (data) =>{
-
+    const onsubmit = (data,e) =>{
+        e.preventDefault();
         const LoginData = {
             email : data.email,
             password : data.password
         }
-
         dispatch(userLoginAction(LoginData));
         // axios.post('http://localhost:8000/login', LoginData)
         // .then(res => alert("login succesfull"), window.location = "/Profile")
         // .catch(err => alert("invalid id password"));
     }  
-
 
     return (
         <>

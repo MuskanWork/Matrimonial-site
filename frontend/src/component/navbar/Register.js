@@ -26,8 +26,8 @@ function Register(props) {
   const userRegister = useSelector(state => state.userRegister);
   const { userInfo } = userRegister;
 
-  const onsubmit = (data) => { 
-    // data.preventDefault();
+  const onsubmit = (data,e) => { 
+    e.preventDefault();
     const RegisterData = {
             username : data.username,
             email : data.email,

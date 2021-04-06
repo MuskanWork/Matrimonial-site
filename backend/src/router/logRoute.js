@@ -19,49 +19,36 @@ router.post("/login", async (req, res) => {
         const email = req.body.email;
         const password = req.body.password;
         //  const userLog = await user.save();
-        const passSearch = await LogUser.findOne({password})
-        const emailSearch = await LogUser.findOne({email})
-        // console.log(emailSearch.email);
-        // console.log(email);
-        // console.log(passSearch.password);
-        // console.log(password);
-
+        // const passSearch = await RegUser.findOne({password})
+        const emailSearch = await RegUser.findOne({email})
+         console.log(emailSearch.email);
+         console.log(email);
+         console.log(password);
+        console.log(emailSearch.password)
         if(emailSearch){
-            if(password === passSearch.password)
+            const pass = await bcrypt.compare(password, emailSearch.password);
+            console.log(pass)
+            if(pass)
             {
                 console.log("success");
-                res.status(200).send("Login succesfull").redirect("/profile");
+                res.status(200).send("Login succesfull");
+                res.json({message:'Login Successfull'})
                 
             }else{
                 console.log("wrong pass")
-                res.send("incorrect password");
+                res.status(400).send("incorrect password");
+                res.json({message:'incorrect password'})
             }
         }else{
             console.log("user not found");
-            res.send("user not found");
+            res.status(400).send("user not found");
+            res.json({message:'incorrect email id'})
         }
           console.log("finished");
         } catch (e) {
             res.status(400).send(e);
         }
     })
-        //  const useremail = await LogUser.find(email);
-        // res.send(useremail);
-        //  console.log(useremail);
-        
-        //  console.log(email);
-        // const e = emailSearch
-        // console.log(e);
-        // if(e ===  email){
-           
-        //     res.staus(201).send("login successful");
-        //     console.log("login Successfull"); 
-        // }
-        // else{
-        //     res.send("invalid");
-        // }
-        // res.status(201).send(userLog);             
-   
 
 
 

@@ -40,7 +40,6 @@ router.post("/register", async (req, res) => {
             pincode : req.body.pincode,
             mobile : req.body.mobile
         })
-
         const createuser = await user.save();
         emailMsg(req.body.email);
 
