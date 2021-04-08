@@ -71,11 +71,11 @@ router.post("/upload", upload.single("file"), async (req, res)=>{
          const pic= await picture.save();
         res.status(200).send(pic);
         const recentPic = await uploadImg.find();
-        recentPic.exec(function(err,data){
-            if(err) throw err;
+        // recentPic.exec(function(err,data){
+        //     if(err) throw err;
 
-            res.render({records : data});
-        })
+        //     res.render({records : data});
+        // })
         console.log("succesfull upload")
     }catch(e){
         res.status(400).send(e);
@@ -87,12 +87,11 @@ router.get("/upload", async (req, res) => {
 
         const picData = await uploadImg.find();
         res.status(200).send(picData);
-        picData.exec(function(err,data){
-            if(err) throw err;
+        // picData.exec(function(err,data){
+        //     if(err) throw err;
 
-            res.render({records : data})
-        })
-        
+            // res.render({records : data})
+        // })   
     } catch (e) {
         res.status(400).send(e);
     }

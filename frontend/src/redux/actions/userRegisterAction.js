@@ -12,11 +12,11 @@ const userRegisterAction = (RegisterData) => {
           'Content-Type': 'application/json',
         },
       };
-      const { data } = await  axios.post('http://localhost:8000/register', RegisterData)
-        .then(res => console.log(res.data))
+      const data = await  axios.post('http://localhost:8000/register', RegisterData)
+        .then(res => alert("register succesfull!!"))
       dispatch({
         type: USER_REGISTER_SUCCESS,
-        payload: data
+        payload: data ,
       });
       //saving user to localstorage
       localStorage.setItem('userRegisterData', JSON.stringify(data));

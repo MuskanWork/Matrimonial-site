@@ -18,8 +18,9 @@ const reducer = combineReducers({
 });
 
 //getting user from localStorage and save it into our store
-const userAuthFromStorage = localStorage.getItem('userRegisterData', 'userLoginData','userProfileUpload','getProfileData','getProfileImg')
-? JSON.parse(localStorage.getItem('userRegisterData','userLoginData','userProfileUpload','getProfileData','getProfileImg')) : null;
+console.log("userA")
+const userAuthFromStorage = localStorage.getItem('userRegisterData','userLoginData','userProfilePicData','userProfileImgData','userProfileData')
+? JSON.stringify(localStorage.getItem('userRegisterData','userLoginData','userProfilePicData','userProfileImgData','userProfileData')) : null;
 
 const initialState = {
     userRegister: {userInfo: userAuthFromStorage},

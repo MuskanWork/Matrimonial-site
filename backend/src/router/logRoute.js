@@ -15,34 +15,30 @@ router.post("/login", async (req, res) => {
             email : req.body.email,
             password : securePassword
         })
-       
+        //   const userLog = await user.save();
         const email = req.body.email;
         const password = req.body.password;
-        //  const userLog = await user.save();
         // const passSearch = await RegUser.findOne({password})
-        const emailSearch = await RegUser.findOne({email})
-         console.log(emailSearch.email);
-         console.log(email);
-         console.log(password);
-        console.log(emailSearch.password)
+            const emailSearch = await RegUser.findOne({email})
+        //  console.log(emailSearch.email);
+        //  console.log(email);
+        //  console.log(password);
+        // console.log(emailSearch.password)
         if(emailSearch){
-            const pass = await bcrypt.compare(password, emailSearch.password);
+                const pass = await bcrypt.compare(password, emailSearch.password);
             console.log(pass)
             if(pass)
             {
                 console.log("success");
-                res.status(200).send("Login succesfull");
-                res.json({message:'Login Successfull'})
+                res.status(200).send("Login succesfull")
                 
             }else{
                 console.log("wrong pass")
-                res.status(400).send("incorrect password");
-                res.json({message:'incorrect password'})
+                res.status(400).send("incorrect password")
             }
         }else{
             console.log("user not found");
-            res.status(400).send("user not found");
-            res.json({message:'incorrect email id'})
+            res.status(400).send("user not found")
         }
           console.log("finished");
         } catch (e) {

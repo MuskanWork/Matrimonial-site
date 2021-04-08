@@ -7,11 +7,7 @@ const userProfileImgAction = () => {
         dispatch({
           type: GET_PROFILE_IMG_REQUEST
         })
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        };
+       
        const temp =  await axios.get('http://localhost:8000/upload')
        const data = temp.data
         console.log(data);
@@ -21,7 +17,7 @@ const userProfileImgAction = () => {
           payload: data
         });
         //saving user to localstorage
-        localStorage.setItem('getProfileImg', JSON.stringify(data));
+        localStorage.setItem('userProfileImgData', JSON.stringify(data));
       } catch (error) {
         dispatch({
           type: GET_PROFILE_IMG_FAIL,

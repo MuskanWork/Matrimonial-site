@@ -28,6 +28,7 @@ function Register(props) {
 
   const onsubmit = (data,e) => { 
     e.preventDefault();
+    console.log(data.gender);
     const RegisterData = {
             username : data.username,
             email : data.email,
@@ -211,30 +212,31 @@ console.log(RegisterData);
               <Form.Check column sm={2}
                 type="radio"
                 label="Male "
+                value="male"
                 name="gender"
                 ref={register({
                   required: "this field is required"
-                })} name="gender" isInvalid={errors.gender}
-              >
-              </Form.Check>
+                })} isInvalid={errors.gender}
+             />
               <Form.Check column sm={3}
                 type="radio"
                 label="Female "
+                value="female"
                 name="gender"
                 ref={register({
                   required: "this field is required"
-                })} name="gender" isInvalid={errors.gender}
-              >
-              </Form.Check>
+                })} isInvalid={errors.gender}
+             />
               <Form.Check column sm={3}
                 type="radio"
                 label="Others"
+                value="others"
                 name="gender"
                 ref={register({
                   required: "this field is required"
-                })} name="gender" isInvalid={errors.gender}
-              >
-              </Form.Check>
+                })} isInvalid={errors.gender}
+              />
+              
 
               {errors.gender && (<div className="invalid-feedback">{errors.gender.message}</div>)}
             </Form.Group>

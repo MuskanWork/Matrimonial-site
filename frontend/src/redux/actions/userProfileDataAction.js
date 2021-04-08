@@ -7,11 +7,7 @@ const userProfileDataAction = () => {
         dispatch({
           type: GET_PROFILE_DATA_REQUEST
         })
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        };
+        
        const temp =  await axios.get('http://localhost:8000/register')
        const data = temp.data
         console.log(data);
@@ -21,7 +17,7 @@ const userProfileDataAction = () => {
           payload: data
         });
         //saving user to localstorage
-        localStorage.setItem('getProfileData', JSON.stringify(data));
+        localStorage.setItem('userProfileData', JSON.stringify(data));
       } catch (error) {
         dispatch({
           type: GET_PROFILE_DATA_FAIL,
