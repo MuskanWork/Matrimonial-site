@@ -22,6 +22,7 @@ console.log("userA")
 const userAuthFromStorage = localStorage.getItem('userRegisterData','userLoginData','userProfilePicData','userProfileImgData','userProfileData')
 ? JSON.stringify(localStorage.getItem('userRegisterData','userLoginData','userProfilePicData','userProfileImgData','userProfileData')) : null;
 
+
 const initialState = {
     userRegister: {userInfo: userAuthFromStorage},
     userLogin: {userInfo: userAuthFromStorage},

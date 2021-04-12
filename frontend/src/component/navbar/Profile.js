@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userProfilePicAction } from '../../redux/actions/userProfilePicAction';
 import { userProfileDataAction } from '../../redux/actions/userProfileDataAction';
 import { userProfileImgAction } from '../../redux/actions/userProfileImgAction';
+import Login from './Login';
 
 const logout = {
     marginTop: "250px"
@@ -120,6 +121,7 @@ const Profile = () => {
 
     return (
         <>
+        <Login disabled="true"></Login>
             <CardDeck>
                 <Card >
                     <Card.Header style={bgtexture}><h3>My Profile</h3>
