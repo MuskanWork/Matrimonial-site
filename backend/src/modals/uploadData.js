@@ -3,10 +3,10 @@ const validator = require('validator');
 
 
 const uploadProfile = new mongoose.Schema({
-    image : {
+    image: {
         type: String
     }
 })
 
-const uploadImg = new mongoose.model('uploadImg' ,uploadProfile );
+const uploadImg = new mongoose.model('uploadImg', uploadProfile);
 module.exports = uploadImg;

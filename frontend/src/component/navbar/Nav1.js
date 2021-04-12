@@ -1,9 +1,7 @@
 import { Navbar, Nav, Form } from 'react-bootstrap';
-// import logo1 from '/home/rails/Desktop/Project/shadimubarak/frontend/src/images/logo1.jpg';
 import './navstyle.css';
 import Register from './Register';
 import Login from './Login';
-// import '/home/rails/Desktop/Project/shadimubarak/frontend/src/component/navbar/Profile.js';
 const Nav1 = (props) => {
 
   return (
@@ -15,14 +13,14 @@ const Nav1 = (props) => {
           <Nav className="mr-auto">
             <Nav.Link href="./Home">Home</Nav.Link>
             <Nav.Link href="#About">About</Nav.Link>
-            
-            <Nav.Link href="/Profile">Profile</Nav.Link>
+
+            {/* <Nav.Link href="/Profile">Profile</Nav.Link> */}
           </Nav>
           <Form inline>
-          <Login onClick={props.handleClose} type="button" class="btn btn-primary my-2 my-sm-0"></Login>
+            <Login onClick={props.handleClose} type="button" class="btn btn-primary my-2 my-sm-0"></Login>
             {/* <button class="btn btn-primary my-2 my-sm-0" type="submit">Login</button> */}
             <Register onClick={props.handleClose} type="button" class="btn btn-primary my-2 my-sm-0"></Register>
-            
+
 
           </Form>
         </Navbar.Collapse>

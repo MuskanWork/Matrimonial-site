@@ -1,4 +1,4 @@
-import { USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS} from './actionTypes';
+import { USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS } from './actionTypes';
 import axios from 'axios';
 
 const userRegisterAction = (RegisterData) => {
@@ -12,11 +12,11 @@ const userRegisterAction = (RegisterData) => {
           'Content-Type': 'application/json',
         },
       };
-      const data = await  axios.post('http://localhost:8000/register', RegisterData)
+      const data = await axios.post('http://localhost:8000/register', RegisterData)
         .then(res => alert("register succesfull!!"))
       dispatch({
         type: USER_REGISTER_SUCCESS,
-        payload: data ,
+        payload: data,
       });
       //saving user to localstorage
       localStorage.setItem('userRegisterData', JSON.stringify(data));
@@ -28,4 +28,4 @@ const userRegisterAction = (RegisterData) => {
     }
   };
 };
-export { userRegisterAction};
+export { userRegisterAction };

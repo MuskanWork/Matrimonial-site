@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 // import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
- import {userRegisterAction} from '../../redux/actions/userRegisterAction'
+import { userRegisterAction } from '../../redux/actions/userRegisterAction'
 const title = {
   textAlign: "center",
   backgroundColor: "rgb(115, 115, 219)",
@@ -26,28 +26,28 @@ function Register(props) {
   const userRegister = useSelector(state => state.userRegister);
   const { userInfo } = userRegister;
 
-  const onsubmit = (data,e) => { 
+  const onsubmit = (data, e) => {
     e.preventDefault();
     console.log(data.gender);
     const RegisterData = {
-            username : data.username,
-            email : data.email,
-            password : data.password,
-            dob : data.dob,
-            height : data.height,
-            weight : data.weight,
-            matrialStatus : data.status,
-            motherToungue : data.toungue,
-            religion : data.religion,
-            gender : data.gender,
-            city : data.city,
-            pincode : data.pincode,
-            mobile : data.mobile
-  }
-  //dispatching action
+      username: data.username,
+      email: data.email,
+      password: data.password,
+      dob: data.dob,
+      height: data.height,
+      weight: data.weight,
+      matrialStatus: data.status,
+      motherToungue: data.toungue,
+      religion: data.religion,
+      gender: data.gender,
+      city: data.city,
+      pincode: data.pincode,
+      mobile: data.mobile
+    }
+    //dispatching action
     dispatch(userRegisterAction(RegisterData));
-console.log(RegisterData);
-  
+    console.log(RegisterData);
+
     // axios.post('http://localhost:8000/register', RegisterData)
     // .then(res => console.log(res.data))
   }
@@ -65,6 +65,7 @@ console.log(RegisterData);
         <Modal.Body>
 
           <Form action="" onSubmit={handleSubmit(onsubmit)}>
+
             <Form.Group as={Row}>
               <Form.Label column sm={4} htmlFor="username">
                 Username
@@ -98,6 +99,7 @@ console.log(RegisterData);
                 {errors.email && (<div className="invalid-feedback">{errors.email.message}</div>)}
               </Col>
             </Form.Group>
+
             <Form.Group as={Row} >
               <Form.Label column sm={4} htmlFor="password">
                 Password
@@ -150,6 +152,7 @@ console.log(RegisterData);
                 {errors.weight && (<div className="invalid-feedback">{errors.weight.message}</div>)}
               </Col>
             </Form.Group>
+
             <Form.Group as={Row}>
               <Form.Label column sm={4} htmlFor="status">
                 Marital Status
@@ -169,6 +172,7 @@ console.log(RegisterData);
                 {errors.status && (<div className="invalid-feedback">{errors.status.message}</div>)}
               </Col>
             </Form.Group>
+
             <Form.Group as={Row}>
               <Form.Label column sm={4} htmlFor="toungue">
                 Mother Toungue
@@ -205,6 +209,7 @@ console.log(RegisterData);
                 {errors.religion && (<div className="invalid-feedback">{errors.religion.message}</div>)}
               </Col>
             </Form.Group>
+
             <Form.Group as={Row}>
               <Form.Label as="legend" htmlFor="gender" column sm={4}>
                 Gender
@@ -217,7 +222,7 @@ console.log(RegisterData);
                 ref={register({
                   required: "this field is required"
                 })} isInvalid={errors.gender}
-             />
+              />
               <Form.Check column sm={3}
                 type="radio"
                 label="Female "
@@ -226,7 +231,7 @@ console.log(RegisterData);
                 ref={register({
                   required: "this field is required"
                 })} isInvalid={errors.gender}
-             />
+              />
               <Form.Check column sm={3}
                 type="radio"
                 label="Others"
@@ -236,13 +241,10 @@ console.log(RegisterData);
                   required: "this field is required"
                 })} isInvalid={errors.gender}
               />
-              
-
               {errors.gender && (<div className="invalid-feedback">{errors.gender.message}</div>)}
             </Form.Group>
 
             <FormGroup as={Row}>
-
               <Form.Label htmlFor="city" column sm={4}>
                 City
                 </Form.Label>
@@ -262,6 +264,7 @@ console.log(RegisterData);
                 {errors.pincode && (<div className="invalid-feedback">{errors.pincode.message}</div>)}
               </Col>
             </FormGroup>
+
             <Form.Group as={Row}>
               <Form.Label htmlFor="mobile" column sm={4}>
                 Mobile Number
@@ -277,6 +280,7 @@ console.log(RegisterData);
                 {errors.mobile && (<div className="invalid-feedback">{errors.mobile.message}</div>)}
               </Col>
             </Form.Group>
+            
             <Form.Group as={Row} htmlFor="tc" ref={register({
               required: "this field is required"
             })} isInvalid={errors.tc} controlId="formHorizontalCheck">
@@ -285,16 +289,16 @@ console.log(RegisterData);
                 {errors.tc && (<div className="invalid-feedback">{errors.tc.message}</div>)}
               </Col>
             </Form.Group>
-          
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
             </Button>
-          <Button variant="primary" type="submit" onClick={handleClose}>
-            Register
+              <Button variant="primary" type="submit" onClick={handleClose}>
+                Register
             </Button>
-        </Modal.Footer>
-        </Form>
+            </Modal.Footer>
+          </Form>
         </Modal.Body>
       </Modal>
     </>

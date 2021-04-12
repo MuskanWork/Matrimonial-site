@@ -1,4 +1,5 @@
 import { Card, CardDeck } from 'react-bootstrap';
+import RegisterUi from './RegisterUi';
 // import kohli from './images/kohli.jpeg'
 // import chopra from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/chopra.png";
 // import singh from "/home/rails/Desktop/Project/shadimubarak/frontend/src/images/singh.jpg";
@@ -10,18 +11,19 @@ const imgSize = {
 }
 const text = {
     fontStyle: "italic",
-    color : "rgb(70, 70, 73)"
+    color: "rgb(70, 70, 73)"
 }
 
 const TitleText = {
-    color : "rgb(70, 70, 73)",
-    padding : "30px 30px 30px 30px",
-    fontWeight : "bold" 
+    color: "rgb(70, 70, 73)",
+    padding: "30px 30px 30px 30px",
+    fontWeight: "bold"
 }
 const MatchedCouples = () => {
 
     return (
         <>
+            <RegisterUi/>
             <center><h2 style={TitleText}> Matched by ShadiMubarak </h2></center>
             <CardDeck>
                 <Card>
